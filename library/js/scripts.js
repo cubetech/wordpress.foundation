@@ -34,28 +34,6 @@ $(document).ready(function() {
 		return true;
 	});
 	
-	var $window_w = $(window).width();
-	if ($window_w > 480){
-		$('a.dropdown-toggle').css('display', 'none')
-		$('#menu-top-nav').removeClass('dropdown-menu');
-		$('#menu-top-nav').addClass('nav');
-	}
-	
-	// adjust top nav menu based on screen width
-	$(window).resize(function() {
-		var $window_w = $(window).width();
-		if ($window_w > 480){
-			$('a.dropdown-toggle').css('display', 'none')
-			$('#menu-top-nav').removeClass('dropdown-menu');
-			$('#menu-top-nav').addClass('nav');
-		}
-		else{
-			$('a.dropdown-toggle').css('display', 'inline-block')
-			$('#menu-top-nav').removeClass('nav');
-			$('#menu-top-nav').addClass('dropdown-menu');
-		}
-	});
-	
 	// Input placeholder text fix for IE
 	$('[placeholder]').focus(function() {
 	  var input = $(this);

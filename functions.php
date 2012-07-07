@@ -163,6 +163,19 @@ function custom_password_form() {
 
 /*********** update standard wp tag cloud widget so it looks better ************/
 
+// filter tag clould output so that it can be styled by CSS
+function add_tag_class( $taglinks ) {
+    $tags = explode('</a>', $taglinks);
+    $regex = "#(.*tag-link[-])(.*)(' title.*)#e";
+        foreach( $tags as $tag ) {
+            $tagn[] = preg_replace($regex, "('$1$2 label radius tag-'.get_tag($2)->slug.'$3')", $tag );
+        }
+    $taglinks = implode('</a>', $tagn);
+    return $taglinks;
+}
+
+add_action('wp_tag_cloud', 'add_tag_class');
+
 add_filter( 'widget_tag_cloud_args', 'my_widget_tag_cloud_args' );
 
 function my_widget_tag_cloud_args( $args ) {
@@ -177,7 +190,7 @@ add_filter('wp_tag_cloud','wp_tag_cloud_filter', 10, 2);
 
 function wp_tag_cloud_filter($return, $args)
 {
-  return '<div id="tag-cloud">'.$return.'</div>';
+  return '<div id="tag-cloud"><p>'.$return.'</p></div>';
 }
 
 // Enable shortcodes in widgets
@@ -204,6 +217,112 @@ function remove_thumbnail_dimensions( $html ) {
     $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
     return $html;
 }
+
+// change the standard class that wordpress puts on the active menu item in the nav bar
+//Deletes all CSS classes and id's, except for those listed in the array below
+function custom_wp_nav_menu($var) {
+        return is_array($var) ? array_intersect($var, array(
+                //List of allowed menu classes
+                'current_page_item',
+                'current_page_parent',
+                'current_page_ancestor',
+                'first',
+                'last',
+                'vertical',
+                'horizontal'
+                )
+        ) : '';
+}
+add_filter('nav_menu_css_class', 'custom_wp_nav_menu');
+add_filter('nav_menu_item_id', 'custom_wp_nav_menu');
+add_filter('page_css_class', 'custom_wp_nav_menu');
+ 
+//Replaces "current-menu-item" with "active"
+function current_to_active($text){
+        $replace = array(
+                //List of menu item classes that should be changed to "active"
+                'current_page_item' => 'active',
+                'current_page_parent' => 'active',
+                'current_page_ancestor' => 'active',
+        );
+        $text = str_replace(array_keys($replace), $replace, $text);
+                return $text;
+        }
+add_filter ('wp_nav_menu','current_to_active');
+ 
+//Deletes empty classes and removes the sub menu class
+function strip_empty_classes($menu) {
+    $menu = preg_replace('/ class=""| class="sub-menu"/','',$menu);
+    return $menu;
+}
+add_filter ('wp_nav_menu','strip_empty_classes');
+
+
+// add the 'has-flyout' class to any li's that have children and add the arrows to li's with children
+
+class description_walker extends Walker_Nav_Menu
+{
+      function start_el(&$output, $item, $depth, $args)
+      {
+            global $wp_query;
+            $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+            
+            $class_names = $value = '';
+            
+            // If the item has children, add the dropdown class for foundation
+            if ( $args->has_children ) {
+                $class_names = "has-flyout ";
+            }
+            
+            $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+            
+            $class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+            $class_names = ' class="'. esc_attr( $class_names ) . '"';
+           
+            $output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+
+            $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+            $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+            $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+            $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+            // if the item has children add these two attributes to the anchor tag
+            // if ( $args->has_children ) {
+            //     $attributes .= 'class="dropdown-toggle" data-toggle="dropdown"';
+            // }
+
+            $item_output = $args->before;
+            $item_output .= '<a'. $attributes .'>';
+            $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );
+            $item_output .= $args->link_after;
+            // if the item has children add the caret just before closing the anchor tag
+            if ( $args->has_children ) {
+                $item_output .= '</a><a href="#" class="flyout-toggle"><span> </span></a>';
+            }
+            else{
+                $item_output .= '</a>';
+            }
+            $item_output .= $args->after;
+
+            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            }
+            
+        function start_lvl(&$output, $depth) {
+            $indent = str_repeat("\t", $depth);
+            $output .= "\n$indent<ul class=\"flyout\">\n";
+        }
+            
+        function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output )
+            {
+                $id_field = $this->db_fields['id'];
+                if ( is_object( $args[0] ) ) {
+                    $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
+                }
+                return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
+            }
+        
+            
+}
+
 
 // Add the Meta Box to the homepage template
 function add_homepage_meta_box() {  

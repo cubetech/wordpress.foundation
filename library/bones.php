@@ -55,10 +55,10 @@ add_filter('excerpt_more', 'bones_excerpt_more');
 	
 // Adding WP 3+ Functions & Theme Support
 function bones_theme_support() {
-	add_theme_support('post-thumbnails');      // wp thumbnails (sizes handled in functions.php)
-	set_post_thumbnail_size(125, 125, true);   // default thumb size
-	add_custom_background();                   // wp custom background
-	add_theme_support('automatic-feed-links'); // rss thingy
+	add_theme_support( 'post-thumbnails' );      // wp thumbnails (sizes handled in functions.php)
+	set_post_thumbnail_size( 125, 125, true );   // default thumb size
+	add_theme_support( 'custom-background' );   // wp custom background
+	add_theme_support( 'automatic-feed-links' ); // rss thingy
 	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
 	// adding post format support
 	add_theme_support( 'post-formats',      // post formats
@@ -101,22 +101,8 @@ function bones_main_nav() {
     		'theme_location' => 'main_nav', /* where in the theme it's assigned */
     		'container' => 'false', /* container tag */
     		'fallback_cb' => 'bones_main_nav_fallback', /* menu fallback */
-    		'depth' => '1' /* suppress lower levels for now */
-    	)
-    );
-}
-
-function mobile_nav() {
-	// display the wp3 menu if available
-    wp_nav_menu( 
-    	array( 
-    		'menu' => 'main_nav', /* menu name */
-    		'menu_class' => 'top-nav nav-bar twelve columns hide-on-desktops',
-    		'theme_location' => 'main_nav', /* where in the theme it's assigned */
-    		'container' => 'false', /* container tag */
-    		'fallback_cb' => 'bones_main_nav_fallback', /* menu fallback */
-    		'depth' => '1', /* suppress lower levels for now */
-    		'items_wrap' => '%3$s'
+    		'depth' => '2',
+    		'walker' => new description_walker()
     	)
     );
 }

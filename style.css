@@ -8,41 +8,10 @@ Author URI: http://320press.com
 Tags: bones, zurb, foundation, 320press, clean, basic
 */
 
-/* micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
-/* For modern browsers */
-.clearfix:before,
-.clearfix:after {
-    content:"";
-    display:table;
-}
-
-.clearfix:after {
-    clear:both;
-}
-
-/* For IE 6/7 (trigger hasLayout) */
-.clearfix {
-    zoom:1;
-}
-
 /* layout */
 
 #top-header{
 	padding-top: 20px;
-}
-
-#content{
-	margin-bottom: 9px;
-	border-bottom: 1px solid #ccc;
-}
-
-#main{
-	margin-bottom: 18px;
-	border-bottom: 1px solid #ccc;
-}
-
-#s{
-	width: 100px;
 }
 
 .more-link{
@@ -51,27 +20,6 @@ Tags: bones, zurb, foundation, 320press, clean, basic
 
 p.attribution{
 	text-align: right;
-}
-
-.siteinfo{
-}
-
-.siteinfo h1{
-	margin-bottom: 0;
-}
-
-h4.subhead{
-    color: #777777;
-    font-weight: 300;
-    margin-bottom: 12px;
-}
-
-#menu-top-nav{
-	margin-top: 0;
-}
-
-.nav-bar.hide-on-desktops .nice.tabs{
-	margin-bottom: 0;
 }
 
 #inner-footer{
@@ -88,8 +36,6 @@ article.post{
 	font-style: italic;
 	color: #808080;
 }
-
-
 
 div[id*='attachment_']{
 	max-width: 100%;
@@ -181,11 +127,6 @@ code, pre {
 
 .page-template-page-homepage-php #main {
 	border-bottom: none;
-}
-
-.home-main{
-	border-bottom: 1px solid #ccc;
-	margin-bottom: 18px;
 }
 
 .page-template-page-homepage-php #main header{
@@ -301,16 +242,6 @@ li.next{
 	margin-bottom: 18px;
 }
 
-/* change default form padding for search */
-
-.widget_search form{
-	padding-left: 0;
-}
-
-.widget_search .small.button{
-	padding: 5px 20px 8px;
-}
-
 @media only screen and (min-width: 768px) {
 	ol.commentlist div.avatar{
 		margin-right: 0;
@@ -334,14 +265,6 @@ li.next{
 	
 	ol.commentlist div.avatar{
 		margin-right: 0;
-	}
-	
-	#search{
-		width: 100%;
-	}
-	
-	#s{
-		width: 210px;
 	}
 	
 }

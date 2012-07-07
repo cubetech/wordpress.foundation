@@ -6,11 +6,11 @@
 					</nav>
 				</div>
 				
+				<div class="panel">
 				<div class="row">
-					<p class="ten columns">&copy; <?php bloginfo('name'); ?> <?php _e("is brought to you by", "bonestheme"); ?> <a href="http://320press.com/wp-foundation">WP-Foundation</a>, <a href="http://wordpress.org/" title="WordPress">WordPress</a>, <a href="http://www.themble.com/bones" title="Bones" class="footer_bones_link">Bones</a> <span class="amp">&</span> <a href="http://foundation.zurb.com/" title="Zurb Foundation">Zurb Foundation</a>.</p>
-					
-					<p class="attribution two columns"><a href="http://320press.com" id="credit320" class="hide-on-phones" title="By the dudes of 320press">320press</a></p>
+					<p class="attribution two columns offset-by-ten"><a href="http://320press.com" id="credit320" class="hide-on-phones" title="By the dudes of 320press">320press</a></p>
 				</div>
+			</div>
 					
 			</footer> <!-- end footer -->
 		
@@ -18,6 +18,15 @@
 		
 		<!-- scripts are now optimized via Modernizr.load -->	
 		<script src="<?php echo get_template_directory_uri(); ?>/library/js/scripts.js"></script>
+
+		<!-- Included JS Files -->
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/jquery.min.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/jquery.reveal.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/jquery.orbit-1.4.0.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/jquery.customforms.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/jquery.placeholder.min.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/jquery.tooltips.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/app.js"></script>
 		
 		<!--[if lt IE 7 ]>
   			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
