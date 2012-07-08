@@ -46,12 +46,12 @@ function bones_queue_js(){ if (!is_admin()){ if ( is_singular() AND comments_ope
 
 // Fixing the Read More in the Excerpts
 // This removes the annoying […] to a Read More link
-function bones_excerpt_more($more) {
-	global $post;
-	// edit here if you like
-	return '...  <a href="'. get_permalink($post->ID) . '" class="more-link" title="Read '.get_the_title($post->ID).'">Read more &raquo;</a>';
-}
-add_filter('excerpt_more', 'bones_excerpt_more');
+// function bones_excerpt_more($more) {
+// 	global $post;
+// 	// edit here if you like
+// 	return '...  <a href="'. get_permalink($post->ID) . '" class="more-link button nice radius" title="Read '.get_the_title($post->ID).'">Read more &raquo;</a>';
+// }
+// add_filter('excerpt_more', 'bones_excerpt_more');
 	
 // Adding WP 3+ Functions & Theme Support
 function bones_theme_support() {
@@ -83,21 +83,19 @@ function bones_theme_support() {
 	);	
 }
 
-	// launching this stuff after theme setup
-	add_action('after_setup_theme','bones_theme_support');	
-	// adding sidebars to Wordpress (these are created in functions.php)
-	add_action( 'widgets_init', 'bones_register_sidebars' );
-	// adding the bones search form (created in functions.php)
-	add_filter( 'get_search_form', 'bones_wpsearch' );
+// launching this stuff after theme setup
+add_action('after_setup_theme','bones_theme_support');	
+// adding sidebars to Wordpress (these are created in functions.php)
+add_action( 'widgets_init', 'bones_register_sidebars' );
+// adding the bones search form (created in functions.php)
+add_filter( 'get_search_form', 'bones_wpsearch' );
 	
-
- 
 function bones_main_nav() {
 	// display the wp3 menu if available
     wp_nav_menu( 
     	array( 
     		'menu' => 'main_nav', /* menu name */
-    		'menu_class' => 'top-nav nav-bar twelve columns hide-on-phones',
+    		'menu_class' => 'top-nav nav-bar hide-on-phones',
     		'theme_location' => 'main_nav', /* where in the theme it's assigned */
     		'container' => 'false', /* container tag */
     		'fallback_cb' => 'bones_main_nav_fallback', /* menu fallback */
@@ -112,9 +110,11 @@ function bones_footer_links() {
     wp_nav_menu(
     	array(
     		'menu' => 'footer_links', /* menu name */
+    		'menu_class' => 'link-list',
     		'theme_location' => 'footer_links', /* where in the theme it's assigned */
     		'container_class' => 'footer-links clearfix', /* container class */
-    		'fallback_cb' => 'bones_footer_links_fallback' /* menu fallback */
+    		'fallback_cb' => 'bones_footer_links_fallback', /* menu fallback */
+    		'walker' => new footer_links_walker()
     	)
 	);
 }

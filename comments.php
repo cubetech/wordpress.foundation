@@ -93,14 +93,13 @@ The comments page for Bones
 	<ul id="comment-form-elements" class="clearfix">
 		
 		<li>
-			  <label for="author">Name <?php if ($req) echo "(required)"; ?></label>
+			  <label for="author">Name <?php if ($req) echo "*"; ?></label>
 			  <input type="text" class="input-text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" placeholder="Your Name" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
 		</li>
 		
 		<li>
-			  <label for="email">Mail <?php if ($req) echo "(required)"; ?></label>
+			  <label for="email">Mail <span class="help-block">(not published)</span><?php if ($req) echo "*"; ?></label>
 			  <input type="email" class="input-text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" placeholder="Your Email" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-			  <span class="help-block">(will not be published)</span>
 		</li>
 		
 		<li>

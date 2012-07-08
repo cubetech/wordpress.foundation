@@ -25,13 +25,7 @@
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon.png">
 		<!-- For everything else -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-		
-		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
-		
-		<script src="<?php echo get_template_directory_uri(); ?>/javascripts/foundation/modernizr.foundation.js"></script>
-		
+				
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
@@ -48,9 +42,6 @@
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
 		
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/stylesheets/app.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
-		
 		<!-- bring in theme options styles -->
 		
 				
@@ -58,20 +49,16 @@
 	
 	<body <?php body_class(); ?>>
 
-		<div class="container">
-				
-		<header role="banner" id="top-header" class="container">
-			<div class="row">
-				<div class="twelve columns siteinfo">
-					<h1><a class="brand" id="logo" href="<?php echo get_bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-					<h4 class="subhead"><?php echo get_bloginfo ( 'description' ); ?></h4>
-				</div>
-			</div>
-		
-			<div class="row">
-				<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>	
-			</div>
+		<div class="row container">
+			<div class="twelve columns">
+				<header role="banner" id="top-header">
+					
+					<div class="siteinfo">
+						<h1><a class="brand" id="logo" href="<?php echo get_bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+						<h4 class="subhead"><?php echo get_bloginfo ( 'description' ); ?></h4>
+					</div>
+			
+					<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>	
 
-		</header> <!-- end header -->
-		
-		
+				</header> <!-- end header -->
+			</div>

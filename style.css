@@ -10,10 +10,6 @@ Tags: bones, zurb, foundation, 320press, clean, basic
 
 /* layout */
 
-#top-header{
-	padding-top: 20px;
-}
-
 .more-link{
 	white-space: nowrap;
 }
@@ -22,13 +18,15 @@ p.attribution{
 	text-align: right;
 }
 
-#inner-footer{
-}
-
 article.post{
 	margin-bottom: 18px;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #E6E6E6;
 }
+
+/* typography */
+h1, h2, h3, h4, h5, h6{ font-family: 'Open Sans', sans-serif; font-weight: 300;}
+
+.siteinfo h1{ font-weight: 800; }
 
 /* post styling */
 
@@ -50,6 +48,7 @@ div[id*='attachment_']{
 
 #main article img{
 	max-width: 100%;
+	margin-bottom: 18px;
 }
 
 h1.single-title{
@@ -69,6 +68,10 @@ img.alignright{
 img.aligncenter{
 	display: block;
 	margin: 0 auto;
+}
+
+p.tags a:hover{
+	color: #f0f0f0;
 }
 
 video {
@@ -123,15 +126,29 @@ code, pre {
 	padding: 5px 15px;
 }
 
+/* featured posts slider */
+#featured div{
+	padding: 0 15px;
+}
+
+#featured h3{
+	margin-top: .2em;
+	padding-left: .05em;
+}
+
+#featured p{
+	padding-left: .1em;
+}
+
+#featured h3,
+#featured p{
+	width: 100%;
+}
+
 /* page styling */
 
 .page-template-page-homepage-php #main {
 	border-bottom: none;
-}
-
-.page-template-page-homepage-php #main header{
-	margin: 2rem 0;
-	text-align: center;
 }
 
 /* comments */
@@ -176,16 +193,9 @@ ol.commentlist span.edit-comment{
 	margin-bottom: 0;
 }
 
-li.bypostauthor{
-	background-color: #F0F0F0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
 a.comment-reply-link{
 	position: absolute;
-	right: 0;
+	right: 18px;
 	bottom: 0;
 }
 
@@ -242,6 +252,10 @@ li.next{
 	margin-bottom: 18px;
 }
 
+a[class^='tag-link-']:hover{
+	color: #f0f0f0;
+}
+
 @media only screen and (min-width: 768px) {
 	ol.commentlist div.avatar{
 		margin-right: 0;
@@ -250,6 +264,20 @@ li.next{
 	#main{
 		border-bottom: none;
 	}
+
+	#featured h3{
+		margin-top: 2em;
+		padding-left: 2em;
+	}
+
+	#featured p{
+		padding-left: 4em;
+	}
+
+	#featured h3,
+	#featured p{
+		width: 66%;
+	}
 }
 
 @media only screen and (min-width: 940px) {
@@ -257,10 +285,6 @@ li.next{
 	
 	#main{
 		margin-bottom: 0;
-	}
-	
-	.page-template-page-homepage-php #main header{
-		margin: 6rem 0;
 	}
 	
 	ol.commentlist div.avatar{

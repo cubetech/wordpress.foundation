@@ -9,16 +9,6 @@ slow the page load.
 
 */
 
-// Modernizr.load loading the right scripts only if you need them
-Modernizr.load([
-	{
-    // Let's see if we need to load selectivizr
-    test : Modernizr.borderradius,
-    // Modernizr.load loads selectivizr for IE6-8
-    nope : ['selectivizr-min.js']
-	}
-]);
-
 /* imgsizer (flexible images for fluid sites) */
 var imgSizer={Config:{imgCache:[],spacer:"/path/to/your/spacer.gif"},collate:function(aScope){var isOldIE=(document.all&&!window.opera&&!window.XDomainRequest)?1:0;if(isOldIE&&document.getElementsByTagName){var c=imgSizer;var imgCache=c.Config.imgCache;var images=(aScope&&aScope.length)?aScope:document.getElementsByTagName("img");for(var i=0;i<images.length;i++){images[i].origWidth=images[i].offsetWidth;images[i].origHeight=images[i].offsetHeight;imgCache.push(images[i]);c.ieAlpha(images[i]);images[i].style.width="100%";}
 if(imgCache.length){c.resize(function(){for(var i=0;i<imgCache.length;i++){var ratio=(imgCache[i].offsetWidth/imgCache[i].origWidth);imgCache[i].style.height=(imgCache[i].origHeight*ratio)+"px";}});}}},ieAlpha:function(img){var c=imgSizer;if(img.oldSrc){img.src=img.oldSrc;}
@@ -28,6 +18,29 @@ func();}}}}
 
 // as the page loads, cal these scripts
 $(document).ready(function() {
+
+	// add foundation classes and color based on how many times tag is used
+	function addFoundationClass(thisObj) {
+	  var title = $(thisObj).attr('title');
+	  if (title) {
+	    var titles = title.split(' ');
+	    if (titles[0]) {
+	      var num = parseInt(titles[0]);
+	      if (num > 0)
+	      	$(thisObj).addClass('');
+	      if (num > 2 && num < 4)
+	        $(thisObj).addClass('success');
+	      if (num > 5)
+	        $(thisObj).addClass('alert');
+	    }
+	  }
+	  return true;
+	}
+
+	$("#tag-cloud a").each(function() {
+	    addFoundationClass(this);
+	    return true;
+	});
 	
 	$("ol.commentlist a.comment-reply-link").each(function() {
 		$(this).addClass('button blue radius small');

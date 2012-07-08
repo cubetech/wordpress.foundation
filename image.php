@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 			
-			<div id="content" class="clearfix row">
+			<div id="content" class="clearfix">
 			
 				<div id="main" class="eight columns clearfix" role="main">
 
@@ -76,10 +76,10 @@
 					<?php } ?>
 								
 					<!-- Using WordPress functions to retrieve the extracted EXIF information from database -->
-					<div class="panel metadata">
-					
+					<div class="panel">
 						<h3>Image metadata</h3>
-					
+
+					<p>
 					   <?php
 					      $imgmeta = wp_get_attachment_metadata( $id );
 					
@@ -112,6 +112,7 @@
 					       echo "ISO: " . $imgmeta['image_meta']['iso']."<br />";
 					       echo "Shutter Speed: " . $pshutter . "<br />"
 					   ?>
+					</p>
 					</div>
 					
 				</div>
