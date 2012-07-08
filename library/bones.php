@@ -95,7 +95,7 @@ function bones_main_nav() {
     wp_nav_menu( 
     	array( 
     		'menu' => 'main_nav', /* menu name */
-    		'menu_class' => 'top-nav nav-bar hide-on-phones',
+    		'menu_class' => 'top-nav nav-bar hide-for-small',
     		'theme_location' => 'main_nav', /* where in the theme it's assigned */
     		'container' => 'false', /* container tag */
     		'fallback_cb' => 'bones_main_nav_fallback', /* menu fallback */
