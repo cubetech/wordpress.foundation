@@ -317,7 +317,7 @@ function of_recognized_font_sizes() {
  */
 function of_recognized_font_faces() {
 	$default = array(
-		'"Helvetica Neue",Helvetica,Arial,sans-serif'   => 'Default',
+		'Open Sans' => 'Open Sans',
 		'arial'     => 'Arial',
 		'verdana'   => 'Verdana, Geneva',
 		'trebuchet' => 'Trebuchet',

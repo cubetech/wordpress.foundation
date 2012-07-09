@@ -12,6 +12,13 @@ Template Name: Homepage
 					
 					<article role="article">
 					
+						<?php
+
+						$orbit_slider = of_get_option('orbit_slider');
+						if ($orbit_slider){
+
+						?>
+						
 						<header>
 						
 							<div id="featured">
@@ -46,6 +53,8 @@ Template Name: Homepage
 						       });
 						   });
 						</script>
+
+						<?php } ?>
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 

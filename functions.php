@@ -164,6 +164,8 @@ function foundation_js(){
     wp_enqueue_script( 'foundation-tooltips', 'jQuery', '2.0.1', true );
     wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/app.js' ); 
     wp_enqueue_script( 'foundation-app', 'jQuery', '1.0', true );
+    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/off-canvas.js' ); 
+    wp_enqueue_script( 'foundation-off-canvas', 'jQuery', '1.0', true );
 }
 
 add_action('wp_enqueue_scripts', 'foundation_js');
@@ -202,7 +204,7 @@ function bones_comments($comment, $args, $depth) {
             					<?php printf(__('<h4 class="span8">%s</h4>'), get_comment_author_link()) ?>
             					<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time('F jS, Y'); ?> </a></time>
             					
-            					<?php edit_comment_link(__('Edit'),'<span class="edit-comment button radius small blue nice">','</span>') ?>
+            					<?php edit_comment_link(__('Edit'),'<span class="edit-comment">', '</span>'); ?>
                                 
                                 <?php if ($comment->comment_approved == '0') : ?>
                    					<div class="alert-box success">

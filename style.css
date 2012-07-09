@@ -38,6 +38,93 @@ header .menu-action .button.small svg {
     opacity: 0.5;
 }
 
+.mobile-nav-container{
+	margin-left: -100%;
+	float: left;
+	width: 50%;
+	position: absolute;
+	top: 150px;
+}
+
+.active .mobile-nav-container{
+	display: block;
+	margin-left: 0;
+}
+
+.active #main{
+	margin-left: 55%;
+}
+
+.mobile-nav-container,
+#main{
+	-moz-transition: all 0.25s ease-in 0s;
+}
+
+.side-nav{
+	height: auto;
+}
+
+ul.tabs.vertical {
+    border-bottom: 1px solid #E6E6E6;
+    height: auto;
+}
+
+ul.tabs {
+    border-bottom: 1px solid #E6E6E6;
+    display: block;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+ul.tabs.vertical li {
+    border-left: 3px solid #CCCCCC;
+}
+
+ul.tabs.vertical li, ul.tabs.vertical li {
+    float: none;
+    height: auto;
+}
+
+ul.tabs li:first-child {
+    margin-left: 0;
+}
+
+ul.tabs li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+ul.tabs.vertical li a {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-color: #E6E6E6;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    height: auto;
+    line-height: 1;
+    padding: 15px 20px;
+}
+
+ul.tabs li a {
+    color: #6F6F6F;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 23.8px;
+}
+
 /* typography */
 h1, h2, h3, h4, h5, h6{ font-family: 'Open Sans', sans-serif; font-weight: 300;}
 
@@ -142,6 +229,10 @@ code, pre {
 }
 
 /* featured posts slider */
+#featured{
+	border: 1px solid #E6E6E6;
+}
+
 #featured div{
 	padding: 0 15px;
 }
@@ -193,14 +284,14 @@ ol.commentlist div.comment-author{
 	position: relative;
 }
 
-ol.commentlist a.comment-edit-link{
+.panel ol.commentlist a.comment-edit-link{
 	color: #ffffff;
 	text-decoration: none;
 }
 
 ol.commentlist span.edit-comment{
 	position: absolute;
-	right: 0;
+	right: 1.5em;
 	top: 0;
 }
 
@@ -210,7 +301,7 @@ ol.commentlist span.edit-comment{
 
 a.comment-reply-link{
 	position: absolute;
-	right: 18px;
+	right: 1.5em;
 	bottom: 0;
 }
 

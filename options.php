@@ -17,7 +17,6 @@ function optionsframework_option_name() {
 	$optionsframework_settings['id'] = $themename;
 	update_option('optionsframework', $optionsframework_settings);
 	
-	// echo $themename;
 }
 
 /**
@@ -68,31 +67,31 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Headings",
 						"desc" => "Used in H1, H2, H3, H4, H5 & H6 tags.",
 						"id" => "heading_typography",
-						"std" => array('face' => '"Helvetica Neue",Helvetica,Arial,sans-serif','style' => 'bold','color' => '#404040'),
+						"std" => array('face' => '"Open Sans",sans-serif','style' => 'normal','color' => '#222222'),
 						"type" => "wpbs_typography");
 						
 	$options[] = array( "name" => "Main Body Text",
 						"desc" => "Used in P tags.",
 						"id" => "main_body_typography",
-						"std" => array('face' => '"Helvetica Neue",Helvetica,Arial,sans-serif','style' => 'normal','color' => '#404040'),
+						"std" => array('face' => 'Helvetica','style' => 'normal','color' => '#222222'),
 						"type" => "wpbs_typography");
 						
 	$options[] = array( "name" => "Link Color",
 						"desc" => "Default used if no color is selected.",
 						"id" => "link_color",
-						"std" => "",
+						"std" => "#2BA6CB",
 						"type" => "color");
 					
 	$options[] = array( "name" => "Link:hover Color",
 						"desc" => "Default used if no color is selected.",
 						"id" => "link_hover_color",
-						"std" => "",
+						"std" => "#2795B6",
 						"type" => "color");
 						
 	$options[] = array( "name" => "Link:active Color",
 						"desc" => "Default used if no color is selected.",
 						"id" => "link_active_color",
-						"std" => "",
+						"std" => "#2BA6CB",
 						"type" => "color");
 						
 	$options[] = array( "name" => "Top Nav",
@@ -101,32 +100,19 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Top nav background color",
 						"desc" => "Default used if no color is selected.",
 						"id" => "top_nav_bg_color",
-						"std" => "#FFFFFF",
-						"type" => "color");
-						
-	$options[] = array( "name" => "Check to use a gradient for top nav background",
-						"desc" => "Use gradient",
-						"id" => "showhidden_gradient",
-						"std" => "0",
-						"type" => "checkbox");
-	
-	$options[] = array( "name" => "Bottom gradient color",
-						"desc" => "Top nav background color used as top gradient color.",
-						"id" => "top_nav_bottom_gradient_color",
-						"std" => "#333333",
-						"class" => "hidden",
+						"std" => "#4D4D4D",
 						"type" => "color");
 						
 	$options[] = array( "name" => "Top nav item color",
 						"desc" => "Link color.",
 						"id" => "top_nav_link_color",
-						"std" => "#2A85E8",
+						"std" => "#E6E6E6",
 						"type" => "color");
 						
 	$options[] = array( "name" => "Top nav item hover color",
 						"desc" => "Link hover color.",
 						"id" => "top_nav_link_hover_color",
-						"std" => "#11639D",
+						"std" => "#E6E6E6",
 						"type" => "color");
 						
 	$options[] = array( "name" => "Other Settings",
@@ -135,6 +121,12 @@ function optionsframework_options() {
 	$options[] = array( "name" => "'Comments are closed' message on pages",
 						"desc" => "Suppress 'Comments are closed' message",
 						"id" => "suppress_comments_message",
+						"std" => "1",
+						"type" => "checkbox");
+
+	$options[] = array( "name" => "Recent posts homepage slider",
+						"desc" => "Show Orbit slider of recent posts on homepage template?",
+						"id" => "orbit_slider",
 						"std" => "1",
 						"type" => "checkbox");
 									

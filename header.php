@@ -43,7 +43,90 @@
 		<!-- end of wordpress head -->
 		
 		<!-- bring in theme options styles -->
+		<?php 
+		$heading_typography = of_get_option('heading_typography');
+		if ($heading_typography) {
+			$theme_options_styles = '
+			h1, h2, h3, h4, h5, h6{ 
+				font-family: ' . $heading_typography['face'] . '; 
+				font-weight: ' . $heading_typography['style'] . '; 
+				color: ' . $heading_typography['color'] . '; 
+			}';
+		}
 		
+		$main_body_typography = of_get_option('main_body_typography');
+		if ($main_body_typography) {
+			$theme_options_styles .= '
+			body{ 
+				font-family: ' . $main_body_typography['face'] . '; 
+				font-weight: ' . $main_body_typography['style'] . '; 
+				color: ' . $main_body_typography['color'] . '; 
+			}';
+		}
+		
+		$link_color = of_get_option('link_color');
+		if ($link_color) {
+			$theme_options_styles .= '
+			a{ 
+				color: ' . $link_color . '; 
+			}';
+		}
+		
+		$link_hover_color = of_get_option('link_hover_color');
+		if ($link_hover_color) {
+			$theme_options_styles .= '
+			a:hover{ 
+				color: ' . $link_hover_color . '; 
+			}';
+		}
+		
+		$link_active_color = of_get_option('link_active_color');
+		if ($link_active_color) {
+			$theme_options_styles .= '
+			a:active{ 
+				color: ' . $link_active_color . '; 
+			}';
+		}
+		
+		$topbar_bg_color = of_get_option('top_nav_bg_color');
+		if ($topbar_bg_color) {
+			$theme_options_styles .= '
+			.top-nav { 
+				background-color: '. $topbar_bg_color . ';
+			}';
+		}
+		
+		$topbar_link_color = of_get_option('top_nav_link_color');
+		if ($topbar_link_color) {
+			$theme_options_styles .= '
+			.top-nav > li > a { 
+				color: '. $topbar_link_color . ' !important;
+			}';
+		}
+		
+		$topbar_link_hover_color = of_get_option('top_nav_link_hover_color');
+		if ($topbar_link_hover_color) {
+			$theme_options_styles .= '
+			.top-nav > li > a:hover { 
+				color: '. $topbar_link_hover_color . ' !important;
+			}';
+		}
+		
+		$suppress_comments_message = of_get_option('suppress_comments_message');
+		if ($suppress_comments_message){
+			$theme_options_styles .= '
+			#main article {
+				border-bottom: none;
+			}';
+		}
+						
+		if($theme_options_styles){
+			echo '<style>' 
+			. $theme_options_styles . '
+			</style>';
+		}
+		
+		?>
 				
 	</head>
 	
@@ -61,7 +144,7 @@
 					<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>
 
 					<div class="show-for-small menu-action">
-				  	    <a href="#sidebar" id="sidebarButton" class="sidebar-button small secondary button">
+				  	    <a href="#sidebar" id="mobile-nav-button" class="sidebar-button small secondary button">
 							<svg xml:space="preserve" enable-background="new 0 0 48 48" viewBox="0 0 48 48" height="18px" width="18px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
 								<line y2="8.907" x2="48" y1="8.907" x1="0" stroke-miterlimit="10" stroke-width="8" stroke="#000000" fill="none"/>
 								<line y2="24.173" x2="48" y1="24.173" x1="0" stroke-miterlimit="10" stroke-width="8" stroke="#000000" fill="none"/>
@@ -70,6 +153,8 @@
 							</svg>
 						</a>
 					</div>
+
+					<?php bones_mobile_nav(); ?>
 
 				</header> <!-- end header -->
 			</div>

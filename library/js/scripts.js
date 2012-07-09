@@ -16,7 +16,7 @@ var src=img.src;img.style.width=img.offsetWidth+"px";img.style.height=img.offset
 img.oldSrc=src;img.src=c.Config.spacer;},resize:function(func){var oldonresize=window.onresize;if(typeof window.onresize!='function'){window.onresize=func;}else{window.onresize=function(){if(oldonresize){oldonresize();}
 func();}}}}
 
-// as the page loads, cal these scripts
+// as the page loads, call these scripts
 $(document).ready(function() {
 
 	// add foundation classes and color based on how many times tag is used
