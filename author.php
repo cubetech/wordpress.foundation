@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 			
-			<div id="content" class="clearfix row">
+			<div id="content" class="clearfix">
 			
 				<div id="main" class="eight columns clearfix" role="main">
 				
@@ -12,7 +12,7 @@
 						if ( $google_profile ) {
 							echo '<a href="' . esc_url( $google_profile ) . '" rel="me">' . $curauth->display_name . '</a>'; ?></a>
 						<?php } else { ?>
-						<?php echo get_author_name(get_query_var('author')); ?>
+						<?php echo $curauth->display_name; ?>
 						<?php } ?>
 					</h1>
 					

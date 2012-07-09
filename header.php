@@ -25,13 +25,7 @@
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/library/images/icons/l/apple-touch-icon.png">
 		<!-- For everything else -->
 		<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-		
-		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write(unescape('%3Cscript src="<?php echo get_template_directory_uri(); ?>/library/js/libs/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
-		
-		<script src="<?php echo get_template_directory_uri(); ?>/library/js/modernizr.full.min.js"></script>
-		
+				
 		<!-- media-queries.js (fallback) -->
 		<!--[if lt IE 9]>
 			<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>			
@@ -47,9 +41,6 @@
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-		
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/foundation/foundation.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 		
 		<!-- bring in theme options styles -->
 		<?php 
@@ -105,30 +96,10 @@
 			}';
 		}
 		
-		$use_gradient = of_get_option('showhidden_gradient');
-		if ($use_gradient) {
-			$topbar_bottom_gradient_color = of_get_option('top_nav_bottom_gradient_color');
-		
-			$theme_options_styles .= '
-			.top-nav {
-				background-image: -khtml-gradient(linear, left top, left bottom, from(' . $topbar_bg_color . '), to('. $topbar_bottom_gradient_color . '));
-				background-image: -moz-linear-gradient(top, ' . $topbar_bg_color . ', '. $topbar_bottom_gradient_color . ');
-				background-image: -ms-linear-gradient(top, ' . $topbar_bg_color . ', '. $topbar_bottom_gradient_color . ');
-				background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, ' . $topbar_bg_color . '), color-stop(100%, '. $topbar_bottom_gradient_color . '));
-				background-image: -webkit-linear-gradient(top, ' . $topbar_bg_color . ', '. $topbar_bottom_gradient_color . '2);
-				background-image: -o-linear-gradient(top, ' . $topbar_bg_color . ', '. $topbar_bottom_gradient_color . ');
-				background-image: linear-gradient(top, ' . $topbar_bg_color . ', '. $topbar_bottom_gradient_color . ');
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\'' . $topbar_bg_color . '\', endColorstr=\''. $topbar_bottom_gradient_color . '2\', GradientType=0);
-			}';
-		}
-		else{
-			$theme_options_styles .= '.top-nav { background-image: none; };';
-		}	
-		
 		$topbar_link_color = of_get_option('top_nav_link_color');
 		if ($topbar_link_color) {
 			$theme_options_styles .= '
-			.top-nav a { 
+			.top-nav > li > a { 
 				color: '. $topbar_link_color . ' !important;
 			}';
 		}
@@ -136,7 +107,7 @@
 		$topbar_link_hover_color = of_get_option('top_nav_link_hover_color');
 		if ($topbar_link_hover_color) {
 			$theme_options_styles .= '
-			.top-nav a:hover { 
+			.top-nav > li > a:hover { 
 				color: '. $topbar_link_hover_color . ' !important;
 			}';
 		}
@@ -148,8 +119,7 @@
 				border-bottom: none;
 			}';
 		}
-				
-				
+						
 		if($theme_options_styles){
 			echo '<style>' 
 			. $theme_options_styles . '
@@ -161,32 +131,30 @@
 	</head>
 	
 	<body <?php body_class(); ?>>
-				
-		<header role="banner" id="top-header" class="container">
-			<div class="row">
-				<div class="ten columns siteinfo">
-					<h1><a class="brand" id="logo" href="<?php echo get_bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-					<h4 class="subhead"><?php echo get_bloginfo ( 'description' ); ?></h4>
-				</div>
-				
-				<div class="two columns">
-					<ul class="top-nav nav-bar show-on-phones">
-						<li class="has-flyout"><a href="#">Menu</a>
-							<div class="top-nav flyout small">
-								<ul class="nice vertical tabs">
-									<?php mobile_nav(); ?>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-				
-			</div>
-		
-			<div class="row">
-				<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>	
-			</div>
 
-		</header> <!-- end header -->
-		
-		<div class="container">
+		<div class="row container">
+			<div class="twelve columns">
+				<header role="banner" id="top-header">
+					
+					<div class="siteinfo">
+						<h1><a class="brand" id="logo" href="<?php echo get_bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+						<h4 class="subhead"><?php echo get_bloginfo ( 'description' ); ?></h4>
+					</div>
+			
+					<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>
+
+					<div class="show-for-small menu-action">
+				  	    <a href="#sidebar" id="mobile-nav-button" class="sidebar-button small secondary button">
+							<svg xml:space="preserve" enable-background="new 0 0 48 48" viewBox="0 0 48 48" height="18px" width="18px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+								<line y2="8.907" x2="48" y1="8.907" x1="0" stroke-miterlimit="10" stroke-width="8" stroke="#000000" fill="none"/>
+								<line y2="24.173" x2="48" y1="24.173" x1="0" stroke-miterlimit="10" stroke-width="8" stroke="#000000" fill="none"/>
+								<line y2="39.439" x2="48" y1="39.439" x1="0" stroke-miterlimit="10" stroke-width="8" stroke="#000000" fill="none"/>
+								Menu
+							</svg>
+						</a>
+					</div>
+
+					<?php bones_mobile_nav(); ?>
+
+				</header> <!-- end header -->
+			</div>
