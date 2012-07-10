@@ -107,12 +107,9 @@ function theme_styles()
     wp_register_style( 'open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:300,800');
     // This is the compiled css file from SCSS
     wp_register_style( 'foundation-app', get_template_directory_uri() . '/stylesheets/app.css', array(), '3.0', 'all' );
-    // This file is required by all WordPress themes
-    wp_register_style( 'main-style', get_template_directory_uri() . '/style.css', array(), '', 'all' );
-
+    
     wp_enqueue_style( 'open-sans' );
     wp_enqueue_style( 'foundation-app' );
-    wp_enqueue_style( 'main-style' );
 }
 
 add_action('wp_enqueue_scripts', 'theme_styles');
