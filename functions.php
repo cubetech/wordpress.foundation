@@ -133,7 +133,7 @@ if( $test_url !== false ) { // test if the URL exists
 
     function load_local_jQuery() {  
         wp_deregister_script('jquery'); // initiate the function  
-        wp_register_script('jquery', bloginfo('template_url').'/javascripts/jquery.min.js', __FILE__, false, '1.7.2', true); // register the local file  
+        wp_register_script('jquery', get_template_directory_uri().'/javascripts/jquery.min.js', __FILE__, '1.7.2'); // register the local file  
         wp_enqueue_script('jquery'); // enqueue the local file  
     }  
 
