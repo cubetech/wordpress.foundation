@@ -149,20 +149,20 @@ function modernize_it(){
 add_action( 'wp_enqueue_scripts', 'modernize_it' );
 
 function foundation_js(){
-    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/javascripts/foundation/jquery.reveal.js' ); 
-    wp_enqueue_script( 'foundation-reveal', 'jQuery', '1.1', true );
-    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/javascripts/foundation/jquery.orbit-1.4.0.js' ); 
-    wp_enqueue_script( 'foundation-orbit', 'jQuery', '1.4.0', true );
-    wp_register_script( 'foundation-custom-forms', get_template_directory_uri() . '/javascripts/foundation/jquery.customforms.js' ); 
-    wp_enqueue_script( 'foundation-custom-forms', 'jQuery', '1.0', true );
-    wp_register_script( 'foundation-placeholder', get_template_directory_uri() . '/javascripts/foundation/jquery.placeholder.min.js' ); 
-    wp_enqueue_script( 'foundation-placeholder', 'jQuery', '2.0.7', true );
-    wp_register_script( 'foundation-tooltips', get_template_directory_uri() . '/javascripts/foundation/jquery.tooltips.js' ); 
-    wp_enqueue_script( 'foundation-tooltips', 'jQuery', '2.0.1', true );
-    wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/app.js' ); 
-    wp_enqueue_script( 'foundation-app', 'jQuery', '1.0', true );
-    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/off-canvas.js' ); 
-    wp_enqueue_script( 'foundation-off-canvas', 'jQuery', '1.0', true );
+    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/javascripts/foundation/jquery.reveal.js', 'jQuery', '1.1', true ); 
+    wp_enqueue_script( 'foundation-reveal' );
+    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/javascripts/foundation/jquery.orbit-1.4.0.js', 'jQuery', '1.4.0', true ); 
+    wp_enqueue_script( 'foundation-orbit' );
+    wp_register_script( 'foundation-custom-forms', get_template_directory_uri() . '/javascripts/foundation/jquery.customforms.js', 'jQuery', '1.0', true ); 
+    wp_enqueue_script( 'foundation-custom-forms' );
+    wp_register_script( 'foundation-placeholder', get_template_directory_uri() . '/javascripts/foundation/jquery.placeholder.min.js', 'jQuery', '2.0.7', true ); 
+    wp_enqueue_script( 'foundation-placeholder' );
+    wp_register_script( 'foundation-tooltips', get_template_directory_uri() . '/javascripts/foundation/jquery.tooltips.js', 'jQuery', '2.0.1', true ); 
+    wp_enqueue_script( 'foundation-tooltips' );
+    wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/app.js', 'jQuery', '1.0', true ); 
+    wp_enqueue_script( 'foundation-app' );
+    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/off-canvas.js', 'jQuery', '1.0', true ); 
+    wp_enqueue_script( 'foundation-off-canvas' );
 }
 
 add_action('wp_enqueue_scripts', 'foundation_js');
