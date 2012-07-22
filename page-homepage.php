@@ -78,11 +78,6 @@ Template Name: Homepage
 					
 					</article> <!-- end article -->
 					
-					<?php 
-						// No comments on homepage
-						//comments_template();
-					?>
-					
 					<?php endwhile; ?>	
 					
 					<?php else : ?>
@@ -101,9 +96,7 @@ Template Name: Homepage
 					<?php endif; ?>
 			
 				</div> <!-- end #main -->
-    
-				<?php //get_sidebar(); // sidebar 1 ?>
-    
+        
 			</div> <!-- end #content -->
 
 <?php get_footer(); ?>

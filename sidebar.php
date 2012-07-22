@@ -10,7 +10,7 @@
 
 							<!-- This content shows up if there are no widgets defined in the backend. -->
 							
-							<div class="alert-box">Please activate some Widgets.</div>
+							<p>Please activate some Widgets.</p>
 
 						<?php endif; ?>
 
