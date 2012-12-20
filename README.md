@@ -1,14 +1,14 @@
-WORDPRESS FOUNDATION
+WordPress Foundation Theme
 ===================
 
-UPDATED TO VERSION 3.0
 
-Zurb's Foundation (http://foundation.zurb.com) in WordPress theme form. Using Eddie Machado's Bones for a starting point (https://github.com/eddiemachado/bones). 
+Zurb's Foundation (http://foundation.zurb.com) in a WordPress theme.
 
 FEATURES
 ________
 
-We’ve built the WordPress Foundation theme so that it could be used as-is or as a starting point for theme developers. It’s built on top of the Bones theme framework by Eddie Machado and based on v3.0 of Zurb's Foundation.
+We’ve built the WordPress Foundation theme so that it could be used as-is or as a starting point for theme developers. 
+It’s based on v3.x of Zurb's Foundation.
 
 Here’s what we’ve got so far. Watch this project on Github to keep up with some enhancements we’re developing.
 
