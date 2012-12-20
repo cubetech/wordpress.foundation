@@ -4,10 +4,10 @@ require 'zurb-foundation'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "app/css/vendor"
+css_dir = "assets/css/vendor"
 sass_dir = "sass"
-images_dir = "app/img/vendor"
-javascripts_dir = "app/javascript/vendor/"
+images_dir = "assets/img/vendor"
+javascripts_dir = "assets/js/vendor/"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
