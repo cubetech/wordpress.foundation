@@ -8,7 +8,7 @@
 								<?php bones_footer_links(); ?>
 							</nav>
 
-							<p class="attribution two columns"><a href="http://320press.com" id="credit320" title="By the dudes of 320press">320press</a></p>
+							<p class="attribution three columns"><a href="http://www.cubetech.ch" id="creditct" title="A way of cubetech GmbH at Bern, Switzerland">developed by cubetech</a></p>
 
 						</div>
 
