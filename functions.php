@@ -204,7 +204,7 @@ function wp_bones_js(){
 }
 
 add_action('wp_enqueue_scripts', 'wp_bones_js');
-*/
+
 
 /************* COMMENT LAYOUT *********************/
 		
