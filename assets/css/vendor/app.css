@@ -2700,7 +2700,7 @@ div.orbit-wrapper span.rotator {
   position: absolute;
   top: 0;
   left: -20px;
-  background: url('/assets/img/vendor/foundation/orbit/rotator-black.png?1356037423') no-repeat;
+  background: url('/assets/img/vendor/foundation/orbit/rotator-black.png?1356037819') no-repeat;
   z-index: 3;
 }
 /* line 27, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
@@ -2722,7 +2722,7 @@ div.orbit-wrapper span.mask {
 div.orbit-wrapper span.mask.move {
   width: 40px;
   left: 0;
-  background: url('/assets/img/vendor/foundation/orbit/timer-black.png?1356037423') repeat 0 0;
+  background: url('/assets/img/vendor/foundation/orbit/timer-black.png?1356037819') repeat 0 0;
 }
 /* line 32, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper span.pause {
@@ -2732,13 +2732,13 @@ div.orbit-wrapper span.pause {
   position: absolute;
   top: 0;
   left: 0;
-  background: url('/assets/img/vendor/foundation/orbit/pause-black.png?1356037423') no-repeat;
+  background: url('/assets/img/vendor/foundation/orbit/pause-black.png?1356037819') no-repeat;
   z-index: 4;
   opacity: 0;
 }
 /* line 33, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper span.pause.active {
-  background: url('/assets/img/vendor/foundation/orbit/pause-black.png?1356037423') no-repeat 0 -40px;
+  background: url('/assets/img/vendor/foundation/orbit/pause-black.png?1356037819') no-repeat 0 -40px;
 }
 /* line 35, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.timer:hover span.pause, div.orbit-wrapper div.timer:focus span.pause, div.orbit-wrapper span.pause.active {
@@ -2785,24 +2785,24 @@ div.orbit-wrapper div.slider-nav span {
 }
 /* line 48, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.slider-nav span.right {
-  background: url('/assets/img/vendor/foundation/orbit/right-arrow.png?1356037423');
+  background: url('/assets/img/vendor/foundation/orbit/right-arrow.png?1356037819');
   background-size: 100%;
   right: 0;
 }
 /* line 49, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 div.orbit-wrapper div.slider-nav span.left {
-  background: url('/assets/img/vendor/foundation/orbit/left-arrow.png?1356037423');
+  background: url('/assets/img/vendor/foundation/orbit/left-arrow.png?1356037819');
   background-size: 100%;
   left: 0;
 }
 
 /* line 54, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 .lt-ie9 div.orbit-wrapper div.slider-nav span.right {
-  background: url('/assets/img/vendor/foundation/orbit/right-arrow-small.png?1356037423');
+  background: url('/assets/img/vendor/foundation/orbit/right-arrow-small.png?1356037819');
 }
 /* line 55, ../../../../../../../Library/Ruby/Gems/1.8/gems/zurb-foundation-3.2.3/scss/foundation/components/modules/_orbit.scss */
 .lt-ie9 div.orbit-wrapper div.slider-nav span.left {
-  background: url('/assets/img/vendor/foundation/orbit/left-arrow-small.png?1356037423');
+  background: url('/assets/img/vendor/foundation/orbit/left-arrow-small.png?1356037819');
 }
 
 /* Bullet Nav ---------------------- */
@@ -2823,7 +2823,7 @@ ul.orbit-bullets li {
   cursor: pointer;
   color: #999999;
   text-indent: -9999px;
-  background: url('/assets/img/vendor/foundation/orbit/bullets.jpg?1356037423') no-repeat 4px 0;
+  background: url('/assets/img/vendor/foundation/orbit/bullets.jpg?1356037819') no-repeat 4px 0;
   width: 13px;
   height: 12px;
   overflow: hidden;
