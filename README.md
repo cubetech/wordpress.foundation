@@ -41,3 +41,7 @@ Sidebars
 ________
 
 We’ve built in two different sidebars. One for the homepage and one for the other pages. Add widgets to your heart’s content.
+
+
+
+Originally forked from 320press/wordpress-foundation, but worked rudimentary, so we decided to create the repo new instead of a fork.
