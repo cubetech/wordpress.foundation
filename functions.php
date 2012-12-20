@@ -23,20 +23,20 @@ require_once('library/shortcodes.php');
 // require_once('library/admin.php');         // custom admin functions
 
 // Custom Backend Footer
-function bones_custom_admin_footer() {
-	echo '<span id="footer-thankyou">Developed by <a href="http://320press.com" target="_blank">320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
+function cubetech_custom_admin_footer() {
+	echo '<span id="footer-thankyou">Developed by <a href="http://www.cubetech.ch" target="_blank">cubetech</a></span>.';
 }
 
 // adding it to the admin area
-add_filter('admin_footer_text', 'bones_custom_admin_footer');
+add_filter('admin_footer_text', 'cubetech_custom_admin_footer');
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
 add_image_size( 'wpf-featured', 639, 300, true );
 add_image_size ( 'wpf-home-featured', 970, 364, true );
-add_image_size( 'bones-thumb-600', 600, 150, false );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'ct-thumb-600', 600, 150, false );
+add_image_size( 'ct-thumb-300', 300, 100, true );
 /* 
 to add more sizes, simply copy a line from above 
 and change the dimensions & name. As long as you
@@ -106,10 +106,12 @@ function theme_styles()
     // Bring in Open Sans from Google fonts
     wp_register_style( 'open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:300,800');
     // This is the compiled css file from SCSS
-    wp_register_style( 'foundation-app', get_template_directory_uri() . '/stylesheets/app.css', array(), '3.0', 'all' );
+    wp_register_style( 'foundation-app', get_template_directory_uri() . '/assets/css/vendor/app.css', array(), '3.2', 'all' );
+    wp_register_style( 'foundation-style', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0', 'all' );
     
     wp_enqueue_style( 'open-sans' );
     wp_enqueue_style( 'foundation-app' );
+    wp_enqueue_style( 'foundation-style' );
 }
 
 add_action('wp_enqueue_scripts', 'theme_styles');
@@ -118,13 +120,13 @@ add_action('wp_enqueue_scripts', 'theme_styles');
 
 /* pull jquery from google's CDN. If it's not available, grab the local copy. Code from wp.tutsplus.com :-) */
 
-$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'; // the URL to check against  
+$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'; // the URL to check against  
 $test_url = @fopen($url,'r'); // test parameters  
 if( $test_url !== false ) { // test if the URL exists  
 
     function load_external_jQuery() { // load external file  
         wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery  
-        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'); // register the external file  
+        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js'); // register the external file  
         wp_enqueue_script('jquery'); // enqueue the external file  
     }  
 
@@ -133,7 +135,7 @@ if( $test_url !== false ) { // test if the URL exists
 
     function load_local_jQuery() {  
         wp_deregister_script('jquery'); // initiate the function  
-        wp_register_script('jquery', get_template_directory_uri().'/javascripts/jquery.min.js', __FILE__, '1.7.2'); // register the local file  
+        wp_register_script('jquery', get_template_directory_uri().'/assets/js/vendor/jquery.min.js', __FILE__, '1.8.1'); // register the local file  
         wp_enqueue_script('jquery'); // enqueue the local file  
     }  
 
@@ -142,37 +144,67 @@ if( $test_url !== false ) { // test if the URL exists
 
 /* load modernizr from foundation */
 function modernize_it(){
-    wp_register_script( 'modernizr', get_template_directory_uri() . '/javascripts/foundation/modernizr.foundation.js' ); 
+    wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/foundation/modernizr.foundation.js' ); 
     wp_enqueue_script( 'modernizr' );
 }
 
 add_action( 'wp_enqueue_scripts', 'modernize_it' );
 
 function foundation_js(){
-    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/javascripts/foundation/jquery.reveal.js', 'jQuery', '1.1', true ); 
-    wp_enqueue_script( 'foundation-reveal' );
-    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/javascripts/foundation/jquery.orbit-1.4.0.js', 'jQuery', '1.4.0', true ); 
-    wp_enqueue_script( 'foundation-orbit' );
-    wp_register_script( 'foundation-custom-forms', get_template_directory_uri() . '/javascripts/foundation/jquery.customforms.js', 'jQuery', '1.0', true ); 
-    wp_enqueue_script( 'foundation-custom-forms' );
-    wp_register_script( 'foundation-placeholder', get_template_directory_uri() . '/javascripts/foundation/jquery.placeholder.min.js', 'jQuery', '2.0.7', true ); 
-    wp_enqueue_script( 'foundation-placeholder' );
-    wp_register_script( 'foundation-tooltips', get_template_directory_uri() . '/javascripts/foundation/jquery.tooltips.js', 'jQuery', '2.0.1', true ); 
-    wp_enqueue_script( 'foundation-tooltips' );
-    wp_register_script( 'foundation-app', get_template_directory_uri() . '/javascripts/app.js', 'jQuery', '1.0', true ); 
-    wp_enqueue_script( 'foundation-app' );
-    wp_register_script( 'foundation-off-canvas', get_template_directory_uri() . '/javascripts/foundation/off-canvas.js', 'jQuery', '1.0', true ); 
-    wp_enqueue_script( 'foundation-off-canvas' );
+    wp_register_script( 'jquery-cookie', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.cookie.js', 'jQuery', '1.3', true ); 
+    wp_register_script( 'jquery-event-move', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.event.move.js', 'jQuery', '1.3.1', true ); 
+    wp_register_script( 'jquery-event-swipe', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.event.swipe.js', 'jQuery', '0.5', true ); 
+    wp_register_script( 'jquery-offcanvas', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.offcanvas.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'jquery-placeholder', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.placeholder.js', 'jQuery', '2.0.7', true ); 
+    wp_register_script( 'foundation-accordion', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.accordion.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-alerts', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.alerts.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-buttons', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.buttons.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-clearing', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.clearing.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-forms', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.forms.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-joyride', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.joyride.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-magellan', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.magellan.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-mediaQueryToggle', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.mediaQueryToggle.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-navigation', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.navigation.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-orbit', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.orbit.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-reveal', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.reveal.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-tabs', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.tabs.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-tooltip', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.tooltip.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'foundation-topbar', get_template_directory_uri() . '/assets/js/vendor/foundation/jquery.foundation.topbar.js', 'jQuery', '1.0', true ); 
+    wp_register_script( 'modernizr-foundation', get_template_directory_uri() . '/assets/js/vendor/foundation/modernizr.foundation.js', 'jQuery', '2.6.2', true );
+    
+	wp_enqueue_script( 'jquery-cookie' );
+	wp_enqueue_script( 'jquery-event-move' );
+	wp_enqueue_script( 'jquery-event-swipe' );
+	wp_enqueue_script( 'jquery-foundation-accordion' );
+	wp_enqueue_script( 'jquery-foundation-alerts' );
+	wp_enqueue_script( 'jquery-foundation-buttons' );
+	wp_enqueue_script( 'jquery-foundation-clearing' );
+	wp_enqueue_script( 'jquery-foundation-forms' );
+	wp_enqueue_script( 'jquery-foundation-joyride' );
+	wp_enqueue_script( 'jquery-foundation-magellan' );
+	wp_enqueue_script( 'jquery-foundation-mediaQueryToggle' );
+	wp_enqueue_script( 'jquery-foundation-navigation' );
+	wp_enqueue_script( 'jquery-foundation-orbit' );
+	wp_enqueue_script( 'jquery-foundation-reveal' );
+	wp_enqueue_script( 'jquery-foundation-tabs' );
+	wp_enqueue_script( 'jquery-foundation-tooltips' );
+	wp_enqueue_script( 'jquery-foundation-topbar' );
+	wp_enqueue_script( 'jquery-offcanvas' );
+	wp_enqueue_script( 'jquery-placeholder' );
+	wp_enqueue_script( 'modernizr-foundation' );
+	
 }
 
 add_action('wp_enqueue_scripts', 'foundation_js');
 
+/*
 function wp_foundation_js(){
     wp_register_script( 'wp-foundation-js', get_template_directory_uri() . '/library/js/scripts.js', 'jQuery', '1.0', true);
     wp_enqueue_script( 'wp-foundation-js' );
 }
 
 add_action('wp_enqueue_scripts', 'wp_foundation_js');
+*/
 
 /************* COMMENT LAYOUT *********************/
 		
